@@ -6,8 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
-    private static final String COLUMN_USERNAMES = "usernames";
-    private static final String COLUMN_PASSWORDS = "passwords";
+    private static final String COLUMN_USERNAMES = "username";
+    private static final String COLUMN_PASSWORDS = "password";
+    private static final String COLUMN_ACCOUNT_TYPE =  "type";
     private static final String DATABASE_NAME = "courseapp.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -22,7 +23,9 @@ public class Database extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE " + TABLE_USERS +
                 "(" + "id" + "INTEGER PRIMARY KEY, " +
                 COLUMN_USERNAMES + " TEXT, " +
-                COLUMN_PASSWORDS + " TEXT " + ")");
+                COLUMN_PASSWORDS + " TEXT, " +
+                COLUMN_ACCOUNT_TYPE + " TEXT" +
+                ")");
     }
 
     @Override
