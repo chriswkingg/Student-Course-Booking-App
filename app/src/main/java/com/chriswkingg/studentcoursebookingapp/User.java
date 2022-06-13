@@ -20,6 +20,16 @@ public class User {
         return this.password;
     }
 
+    public void addCourse(Course c) {
+        courseList.add(c);
+        //TODO: add to course databse
+    }
+
+    public void removeCourse(Course c) {
+        courseList.remove(c);
+        //TODO: remove course from course database
+    }
+
     public ArrayList<Course> getCourseList() {
         return courseList;
     }

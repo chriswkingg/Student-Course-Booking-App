@@ -15,4 +15,12 @@ public class Course {
     public String getName() {
         return name;
     }
+
+    public boolean equals(Object o) {
+        if(this.getClass() != o.getClass()) {
+            return false;
+        }
+        Course temp = (Course) o;
+        return this.getName() == temp.getName() && this.getCode() == temp.getCode();
+    }
 }
