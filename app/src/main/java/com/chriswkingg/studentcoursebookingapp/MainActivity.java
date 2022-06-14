@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, CreatePage.class));
+                startActivity(new Intent(MainActivity.this, SignUpPage.class));
             }
         });
     }
