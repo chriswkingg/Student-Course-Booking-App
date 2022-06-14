@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
+import android.util.Log;
 
 public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
@@ -60,14 +61,16 @@ public class Database extends SQLiteOpenHelper{
     }
 
     public User authUser(String username, String password) {
-        Cursor users = this.getReadableDatabase().rawQuery("SELECT " + COLUMN_USERNAMES + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAMES + "=" + username, null);
+        Cursor users = this.getReadableDatabase().rawQuery("SELECT " + " * " + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAMES + "='" + username + "'", null);
+        if(users.getCount() == 0) {
+            return null;
+        }
+        users.moveToFirst();
         if(users.getString(2).equals(password)) {
             //auth successful return a user
-            users.close();
             return new User(username, password, Integer.parseInt(users.getString(3)));
         }
         //user doesnt exist
-        users.close();
         return null;
     }
 }
