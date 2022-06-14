@@ -39,9 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 Database database = new Database(MainActivity.this);
                 Log.i(userName, userName);
                 User user = database.authUser(userName, pass);
+                if (user == null){
+                    Toast.makeText(MainActivity.this, "User does not exist in the database, try Signing-Up" , Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (user.getType() == 0){
+                    Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
+                    setContentView(R.layout.admin_page);
+                    //startActivity(i);
 
-                Toast.makeText(MainActivity.this, "Authorized" + user, Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(MainActivity.this, AdminPage.class));
+                }else if (user.getType() == 1){
+                    Toast.makeText(MainActivity.this, "Instructor" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, InstructorPage.class));
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Student" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, StudentPage.class));
+                }
             }
         });
     }
