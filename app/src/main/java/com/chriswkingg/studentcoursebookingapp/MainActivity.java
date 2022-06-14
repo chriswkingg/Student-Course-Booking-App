@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, LoginPage.class));
+                startActivity(new Intent(MainActivity.this, LoginPage.class).putExtra("USERTYPE", "admin"));
             }
         });
 
 
         signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, CreatePage.class));
+                startActivity(new Intent(MainActivity.this, LoginPage.class).putExtra("USERTYPE", "student"));
             }
         });
     }
