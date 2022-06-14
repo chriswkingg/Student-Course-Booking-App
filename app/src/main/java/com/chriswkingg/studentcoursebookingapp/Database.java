@@ -1,6 +1,7 @@
 package com.chriswkingg.studentcoursebookingapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
@@ -27,6 +28,12 @@ public class Database extends SQLiteOpenHelper{
                 COLUMN_PASSWORDS + " TEXT, " +
                 COLUMN_ACCOUNT_TYPE + " TEXT" +
                 ")");
+        //add admin account
+        db.execSQL("INSERT INTO " + TABLE_USERS + "(" +
+                COLUMN_USERNAMES + ", " +
+                COLUMN_PASSWORDS + ", " +
+                COLUMN_ACCOUNT_TYPE +
+                ") VALUES (admin, admin123, 0)", null);
     }
 
     @Override
@@ -48,5 +55,17 @@ public class Database extends SQLiteOpenHelper{
 
         db.insert(TABLE_USERS, null, val);
         db.close();
+    }
+
+    public User authUser(String username, String password) {
+        Cursor users = this.getReadableDatabase().rawQuery("SELECT " + COLUMN_USERNAMES + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAMES + "=" + username, null);
+        if(users.getString(2).equals(password)) {
+            //auth successful return a user
+            users.close();
+            return new User(username, password, Integer.parseInt(users.getString(3)));
+        }
+        //user doesnt exist
+        users.close();
+        return null;
     }
 }
