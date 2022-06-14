@@ -18,12 +18,6 @@ public class MainActivity extends AppCompatActivity {
         Button signUp = (Button) findViewById(R.id.signUp);
 
 
-        login.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, LoginPage.class));
-            }
-        });
-
 
         signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
