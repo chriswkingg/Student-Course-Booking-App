@@ -7,13 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginPage extends AppCompatActivity {
+public class StudentPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_page);
-
-        String userType = getIntent().getStringExtra("USERTYPE");
+        setContentView(R.layout.student_page);
     }
 }
