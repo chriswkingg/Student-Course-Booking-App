@@ -15,6 +15,10 @@ public class Database extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "courseapp.db";
     private static final int DATABASE_VERSION = 3;
 
+    private static final String TABLE_COURSES = "courses";
+    private static final String COLUMN_COURSECODE = "courseCode";
+    private static final String COLUMN_COURSENAME = "courseName";
+
     public Database(Context ctx) {
         super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -30,6 +34,7 @@ public class Database extends SQLiteOpenHelper{
                 COLUMN_PASSWORDS + " TEXT, " +
                 COLUMN_ACCOUNT_TYPE + " TEXT" +
                 ")");
+
         //add admin account
         ContentValues val = new ContentValues();
         val.put(COLUMN_USERNAMES, "admin");
@@ -57,6 +62,17 @@ public class Database extends SQLiteOpenHelper{
         val.put(COLUMN_ACCOUNT_TYPE, u.getType());
 
         db.insert(TABLE_USERS, null, val);
+        db.close();
+    }
+
+    public void addCourse (Course course){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues val = new ContentValues();
+
+        val.put(COLUMN_COURSECODE, course.getCode());
+        val.put(COLUMN_COURSENAME, course.getName());
+
+        db.insert(TABLE_COURSES, null, val);
         db.close();
     }
 

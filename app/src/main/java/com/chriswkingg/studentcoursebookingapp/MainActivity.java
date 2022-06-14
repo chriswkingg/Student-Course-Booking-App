@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Button login = (Button) findViewById(R.id.login);
         Button signUp = (Button) findViewById(R.id.signUp);
         final EditText username = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
-
 
         signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -30,16 +30,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 String userName = username.getText().toString();
                 String pass = password.getText().toString();
 
-
                 Database database = new Database(MainActivity.this);
-
                 User user = database.authUser(userName, pass);
 
                 if (user == null){
@@ -49,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 if (user.getType() == 0){
                     Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
                     setContentView(R.layout.admin_page);
-                    Intent intent = new Intent(MainActivity.this,AdminPage.class);
-                    intent.putExtra("username",userName);
-                    //startActivity(intent);
 
 
                 }else if (user.getType() == 1){
