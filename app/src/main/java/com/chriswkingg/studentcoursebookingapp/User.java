@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
     private String username, password;
-    private int  type;
+    private int type;
     private ArrayList<Course> courseList;
 
     public User(String username, String password, int type) {
