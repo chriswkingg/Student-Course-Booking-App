@@ -3,6 +3,7 @@ package com.chriswkingg.studentcoursebookingapp;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.content.ContentValues;
 
 public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
@@ -10,7 +11,7 @@ public class Database extends SQLiteOpenHelper{
     private static final String COLUMN_PASSWORDS = "password";
     private static final String COLUMN_ACCOUNT_TYPE =  "type";
     private static final String DATABASE_NAME = "courseapp.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public Database(Context ctx) {
         super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,5 +36,17 @@ public class Database extends SQLiteOpenHelper{
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
             onCreate(db);
         }
+    }
+
+    public void addUser(User u) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues val = new ContentValues();
+
+        val.put(COLUMN_USERNAMES, u.getUsername());
+        val.put(COLUMN_PASSWORDS, u.getPassword());
+        val.put(COLUMN_ACCOUNT_TYPE, u.getType());
+
+        db.insert(TABLE_USERS, null, val);
+        db.close();
     }
 }
