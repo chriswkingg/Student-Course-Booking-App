@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage">
+        <activity android:name=".CreatePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
