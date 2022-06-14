@@ -29,11 +29,12 @@ public class Database extends SQLiteOpenHelper{
                 COLUMN_ACCOUNT_TYPE + " TEXT" +
                 ")");
         //add admin account
-        db.execSQL("INSERT INTO " + TABLE_USERS + "(" +
-                COLUMN_USERNAMES + ", " +
-                COLUMN_PASSWORDS + ", " +
-                COLUMN_ACCOUNT_TYPE +
-                ") VALUES (admin, admin123, 0)", null);
+        ContentValues val = new ContentValues();
+        val.put(COLUMN_USERNAMES, "admin");
+        val.put(COLUMN_PASSWORDS, "admin123");
+        val.put(COLUMN_ACCOUNT_TYPE, "0");
+
+        db.insert(TABLE_USERS, null, val);
     }
 
     @Override
