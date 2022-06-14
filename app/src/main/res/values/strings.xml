@@ -4,6 +4,10 @@
     <string name="select_your_user">Select your user:</string>
     <string name="admin">Admin</string>
     <string name="teacher">Teacher</string>
-    <string name="student">Student</string>
+    <string name="Student">Student</string>
     <string name="SelectTypeOfUser">Type of User</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="LogIn">LogIn</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
 </resources>

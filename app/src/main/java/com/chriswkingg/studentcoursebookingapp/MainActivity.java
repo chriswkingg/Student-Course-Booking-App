@@ -14,24 +14,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button adminBtn = (Button) findViewById(R.id.admin);
-        Button teacherBtn = (Button) findViewById(R.id.teacher);
-        Button studentBtn = (Button) findViewById(R.id.student);
+        Button login = (Button) findViewById(R.id.login);
+        Button signUp = (Button) findViewById(R.id.signUp);
 
 
-        adminBtn.setOnClickListener(new View.OnClickListener(){
+        login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, LoginPage.class).putExtra("USERTYPE", "admin"));
             }
         });
 
-        teacherBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, LoginPage.class).putExtra("USERTYPE", "teacher"));
-            }
-        });
 
-        studentBtn.setOnClickListener(new View.OnClickListener(){
+        signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, LoginPage.class).putExtra("USERTYPE", "student"));
             }
