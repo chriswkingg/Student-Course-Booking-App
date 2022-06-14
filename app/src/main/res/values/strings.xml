@@ -11,4 +11,6 @@
     <string name="Username">Username</string>
     <string name="Password">Password</string>
     <string name="WelcomeMessage">Welcome</string>
+    <string name="adminUser">user</string>
+    <string name="role">Administrator</string>
 </resources>

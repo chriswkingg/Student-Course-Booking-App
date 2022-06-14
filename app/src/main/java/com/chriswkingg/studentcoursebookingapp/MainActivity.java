@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,9 +37,11 @@ public class MainActivity extends AppCompatActivity {
                 String userName = username.getText().toString();
                 String pass = password.getText().toString();
 
+
                 Database database = new Database(MainActivity.this);
-                Log.i(userName, userName);
+
                 User user = database.authUser(userName, pass);
+
                 if (user == null){
                     Toast.makeText(MainActivity.this, "User does not exist in the database, try Signing-Up" , Toast.LENGTH_SHORT).show();
                     return;
@@ -46,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 if (user.getType() == 0){
                     Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
                     setContentView(R.layout.admin_page);
-                    //startActivity(i);
+                    Intent intent = new Intent(MainActivity.this,AdminPage.class);
+                    intent.putExtra("username",userName);
+                    //startActivity(intent);
+
 
                 }else if (user.getType() == 1){
                     Toast.makeText(MainActivity.this, "Instructor" , Toast.LENGTH_SHORT).show();

@@ -13,5 +13,6 @@ public class AdminPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_page);
 
+
     }
 }

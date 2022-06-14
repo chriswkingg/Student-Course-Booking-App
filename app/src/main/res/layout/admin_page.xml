@@ -9,10 +9,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
+        android:text="Welcome Admin! you are logged in as an Administrator!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="jhbihk" />
+        app:layout_constraintVertical_bias="0.126" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
