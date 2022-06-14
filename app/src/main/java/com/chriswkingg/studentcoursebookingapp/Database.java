@@ -10,13 +10,14 @@ public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_USERNAMES = "username";
     private static final String COLUMN_PASSWORDS = "password";
-    private static final String COLUMN_ACCOUNT_TYPE =  "type";
+    private static final String COLUMN_ACCOUNT_TYPE =  "accountType";
     private static final String DATABASE_NAME = "courseapp.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public Database(Context ctx) {
         super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
 
     @Override
