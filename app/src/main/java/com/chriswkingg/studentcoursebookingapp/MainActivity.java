@@ -18,18 +18,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //declaring buttons
         Button login = (Button) findViewById(R.id.login);
         Button signUp = (Button) findViewById(R.id.signUp);
         final EditText username = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
 
+        //SignUp Button
         signUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, SignUpPage.class));
             }
         });
 
+        //logIn Button
         login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
@@ -60,5 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //
+
     }
 }

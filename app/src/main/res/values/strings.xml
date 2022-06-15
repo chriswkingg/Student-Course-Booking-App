@@ -13,4 +13,8 @@
     <string name="WelcomeMessage">Welcome</string>
     <string name="adminUser">user</string>
     <string name="role">Administrator</string>
+    <string name="adminAddCourse">Add a Course</string>
+    <string name="adminAddUser">Add a User</string>
+    <string name="adminDelCourse">Delete a Course</string>
+    <string name="adminDelUser">Delete a User</string>
 </resources>

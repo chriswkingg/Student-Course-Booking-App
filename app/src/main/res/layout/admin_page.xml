@@ -7,14 +7,66 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome Admin! you are logged in as an Administrator!"
+        android:layout_width="344dp"
+        android:layout_height="71dp"
+        android:text="Welcome Admin! You are logged in as an Administrator"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/adminAddCourse"
+        android:layout_width="127dp"
+        android:layout_height="48dp"
+        android:background="#2196F3"
+        android:text="@string/adminAddCourse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
+
+    <Button
+        android:id="@+id/adminAddUser"
+        android:layout_width="131dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="180dp"
+        android:background="#2196F3"
+        android:text="@string/adminAddUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/adminAddCourse"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/adminDelCourse"
+        android:layout_width="127dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:background="#2196F3"
+        android:text="@string/adminDelCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminAddCourse" />
+
+    <Button
+        android:id="@+id/adminDelUser"
+        android:layout_width="137dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:background="#2196F3"
+        android:text="@string/adminDelUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toEndOf="@+id/adminDelCourse"
+        app:layout_constraintTop_toBottomOf="@+id/adminAddUser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
