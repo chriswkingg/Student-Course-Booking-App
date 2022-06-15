@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (user.getType() == 0){
                     Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
-                    setContentView(R.layout.admin_page);
+                    Intent i = new Intent(MainActivity.this, AdminPage.class);
+                    i.putExtra("username", user.getUsername());
+                    startActivity(i);
 
 
                 }else if (user.getType() == 1){
