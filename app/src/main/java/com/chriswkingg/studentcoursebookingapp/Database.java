@@ -65,6 +65,13 @@ public class Database extends SQLiteOpenHelper{
         db.close();
     }
 
+    public void deleteUser(User u) {
+        //TODO: check if the user actually exists first
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USERS, COLUMN_USERNAMES + "=?", new String[]{u.getUsername()});
+        db.close();
+    }
+
     public void addCourse (Course course){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
@@ -73,6 +80,13 @@ public class Database extends SQLiteOpenHelper{
         val.put(COLUMN_COURSENAME, course.getName());
 
         db.insert(TABLE_COURSES, null, val);
+        db.close();
+    }
+
+    public void deleteCourse(Course c) {
+        //TODO: check if the course exists first
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_COURSES, COLUMN_COURSECODE + "=?", new String[]{c.getCode()});
         db.close();
     }
 
