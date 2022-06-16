@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,25 +23,25 @@ public class AdminPage extends AppCompatActivity {
 
         adminAddCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(AdminPage.this, adminAddCourse.class));
+                startActivity(new Intent(AdminPage.this, AdminAddCourse.class));
             }
         });
 
         adminDelCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(AdminPage.this, adminDelCourse.class));
+                startActivity(new Intent(AdminPage.this, AdminDelCourse.class));
             }
         });
 
         adminAddUser.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(AdminPage.this, adminAddUser.class));
+                startActivity(new Intent(AdminPage.this, AdminAddUser.class));
             }
         });
 
         adminDelUser.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(AdminPage.this, adminDelUser.class));
+                startActivity(new Intent(AdminPage.this, AdminDelUser.class));
             }
         });
 
