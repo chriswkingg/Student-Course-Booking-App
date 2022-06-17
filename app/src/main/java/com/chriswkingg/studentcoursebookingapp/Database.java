@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_USERNAMES = "username";
@@ -77,6 +79,18 @@ public class Database extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, COLUMN_USERNAMES + "=?", new String[]{u.getUsername()});
         db.close();
+    }
+
+    public ArrayList<User> getUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<User> userList = new ArrayList<User>();
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_USERS, null);
+        while(c.moveToNext()) {
+            //-1 user type represents the user is NOT logged in
+            userList.add(new User(c.getString(1), c.getString(2), -1));
+        }
+        db.close();
+        return userList;
     }
 
     public void addCourse (Course course){
