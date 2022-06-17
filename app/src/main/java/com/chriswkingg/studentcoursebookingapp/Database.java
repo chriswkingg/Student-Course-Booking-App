@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class Database extends SQLiteOpenHelper{
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_USERNAMES = "username";
@@ -79,6 +81,18 @@ public class Database extends SQLiteOpenHelper{
         db.close();
     }
 
+    public ArrayList<User> getUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<User> userList = new ArrayList<User>();
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_USERS, null);
+        while(c.moveToNext()) {
+            //-1 user type represents the user is NOT logged in
+            userList.add(new User(c.getString(1), c.getString(2), -1));
+        }
+        db.close();
+        return userList;
+    }
+
     public void addCourse (Course course){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
@@ -95,6 +109,17 @@ public class Database extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_COURSES, COLUMN_COURSECODE + "=?", new String[]{c.getCode()});
         db.close();
+    }
+
+    public ArrayList<Course> getCourses() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Course> courseList = new ArrayList<Course>();
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_COURSES, null);
+        while(c.moveToNext()) {
+            courseList.add(new Course(c.getString(1), c.getString(2)));
+        }
+        db.close();
+        return courseList;
     }
 
     public User authUser(String username, String password) {
