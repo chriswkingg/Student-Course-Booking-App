@@ -25,7 +25,7 @@ public class AdminAddCourse extends AppCompatActivity{
                 String crsDesc = courseDesc.getText().toString();
 
                 Database database = new Database(AdminAddCourse.this);
-                //database.addCourse(new Course(crsDesc, crsCode));
+                database.addCourse(new Course(crsDesc, crsCode));
             }
         });
 

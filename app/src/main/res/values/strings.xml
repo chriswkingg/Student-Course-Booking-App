@@ -22,4 +22,8 @@
     <string name="courseD">Description</string>
     <string name="courseID">Course Code</string>
     <string name="addCourse">Add</string>
+    <string name="addUsername">Enter new Username</string>
+    <string name="addPass">Enter new Password</string>
+    <string name="Instructor">Instructor</string>
+    <string name="editCourse">Edit Course</string>
 </resources>
