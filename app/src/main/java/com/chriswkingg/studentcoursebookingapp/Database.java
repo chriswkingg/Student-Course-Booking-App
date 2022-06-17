@@ -111,6 +111,17 @@ public class Database extends SQLiteOpenHelper{
         db.close();
     }
 
+    public ArrayList<Course> getCourses() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Course> courseList = new ArrayList<Course>();
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_COURSES, null);
+        while(c.moveToNext()) {
+            courseList.add(new Course(c.getString(1), c.getString(2)));
+        }
+        db.close();
+        return courseList;
+    }
+
     public User authUser(String username, String password) {
         Cursor users = this.getReadableDatabase().rawQuery("SELECT " + " * " + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAMES + "='" + username + "'", null);
         if(users.getCount() == 0) {
