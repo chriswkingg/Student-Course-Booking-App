@@ -13,7 +13,7 @@ public class Database extends SQLiteOpenHelper{
     private static final String COLUMN_PASSWORDS = "password";
     private static final String COLUMN_ACCOUNT_TYPE =  "accountType";
     private static final String DATABASE_NAME = "courseapp.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_COURSECODE = "courseCode";
@@ -27,7 +27,7 @@ public class Database extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //create the database
+        //create the users table
         db.execSQL("CREATE TABLE " + TABLE_USERS +
                 " (" + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_USERNAMES + " TEXT, " +
@@ -42,6 +42,13 @@ public class Database extends SQLiteOpenHelper{
         val.put(COLUMN_ACCOUNT_TYPE, "0");
 
         db.insert(TABLE_USERS, null, val);
+
+        //create the courses table
+        db.execSQL("CREATE TABLE " + TABLE_COURSES +
+                " (" + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_COURSECODE + " TEXT, " +
+                COLUMN_COURSENAME + " TEXT " +
+                ")");
     }
 
     @Override
@@ -65,6 +72,13 @@ public class Database extends SQLiteOpenHelper{
         db.close();
     }
 
+    public void deleteUser(User u) {
+        //TODO: check if the user actually exists first
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USERS, COLUMN_USERNAMES + "=?", new String[]{u.getUsername()});
+        db.close();
+    }
+
     public void addCourse (Course course){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
@@ -73,6 +87,13 @@ public class Database extends SQLiteOpenHelper{
         val.put(COLUMN_COURSENAME, course.getDescription());
 
         db.insert(TABLE_COURSES, null, val);
+        db.close();
+    }
+
+    public void deleteCourse(Course c) {
+        //TODO: check if the course exists first
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_COURSES, COLUMN_COURSECODE + "=?", new String[]{c.getCode()});
         db.close();
     }
 
