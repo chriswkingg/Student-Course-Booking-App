@@ -39,9 +39,9 @@ public class AdminAddUser extends AppCompatActivity{
                 String password = newPassword.getText().toString();
                 Database database = new Database(AdminAddUser.this);
                 if (instructor.isChecked())
-                    database.addUser(new User(username, password, 1));
+                    database.addUser(new User(username, password, User.INSTRUCTOR));
                 else{
-                    database.addUser(new User(username, password, 2));
+                    database.addUser(new User(username, password, User.STUDENT));
                 }
 
             }

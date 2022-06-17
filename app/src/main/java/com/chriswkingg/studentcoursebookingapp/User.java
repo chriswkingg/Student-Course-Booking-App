@@ -3,6 +3,10 @@ package com.chriswkingg.studentcoursebookingapp;
 import java.util.ArrayList;
 
 public class User {
+    public static final int ADMIN = 0;
+    public static final int INSTRUCTOR = 1;
+    public static final int STUDENT = 2;
+
     private String username, password;
     private int type;
     private ArrayList<Course> courseList;

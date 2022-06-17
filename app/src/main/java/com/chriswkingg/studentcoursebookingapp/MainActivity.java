@@ -45,18 +45,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "User does not exist in the database, try Signing-Up" , Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (user.getType() == 0){
+                if (user.getType() == User.ADMIN){
                     Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, AdminPage.class);
                     i.putExtra("username", user.getUsername());
                     startActivity(i);
-
-
-                }else if (user.getType() == 1){
+                } else if (user.getType() == User.INSTRUCTOR){
                     Toast.makeText(MainActivity.this, "Instructor" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, InstructorPage.class));
-                }
-                else{
+                } else {
                     Toast.makeText(MainActivity.this, "Student" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, StudentPage.class));
                 }
