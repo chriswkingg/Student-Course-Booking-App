@@ -3,8 +3,8 @@ package com.chriswkingg.studentcoursebookingapp;
 public class Course {
     private String code, name;
 
-    public Course(String name, String code) {
-        this.name = name;
+    public Course(String description, String code) {
+        this.name = description;
         this.code = code;
     }
 
@@ -12,7 +12,7 @@ public class Course {
         return code;
     }
 
-    public String getName() {
+    public String getDescription() {
         return name;
     }
 
@@ -21,6 +21,6 @@ public class Course {
             return false;
         }
         Course temp = (Course) o;
-        return this.getName() == temp.getName() && this.getCode() == temp.getCode();
+        return this.getDescription() == temp.getDescription() && this.getCode() == temp.getCode();
     }
 }

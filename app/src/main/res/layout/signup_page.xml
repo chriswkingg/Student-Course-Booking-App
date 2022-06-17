@@ -13,6 +13,7 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +26,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createUsername" />
@@ -45,17 +47,26 @@
         android:layout_height="60dp"
         >
 
-        <RadioButton
-            android:id="@+id/instructorButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Instructor" />
-
-        <RadioButton
-            android:id="@+id/studentButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Student" />
     </RadioGroup>
+
+    <RadioButton
+        android:id="@+id/studentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:minHeight="48dp"
+        android:text="Student"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <RadioButton
+        android:id="@+id/instructorButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Instructor"
+        app:layout_constraintBottom_toTopOf="@+id/studentButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
