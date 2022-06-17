@@ -1,6 +1,8 @@
 package com.chriswkingg.studentcoursebookingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -13,15 +15,19 @@ public class AdminAddCourse extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_course);
 
+        Button addCourse = (Button) findViewById(R.id.addCourse);
         final EditText courseCode = (EditText) findViewById(R.id.courseCode);
         final EditText courseDesc = (EditText) findViewById(R.id.courseD);
 
-        String crsCode = courseCode.getText().toString();
-        String crsDesc = courseDesc.getText().toString();
+        addCourse.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String crsCode = courseCode.getText().toString();
+                String crsDesc = courseDesc.getText().toString();
 
-        Database database = new Database(AdminAddCourse.this);
-        //Course course = database.addCourse(crsCode);
-
+                Database database = new Database(AdminAddCourse.this);
+                database.addCourse(new Course(crsDesc, crsCode));
+            }
+        });
 
     }
 }
