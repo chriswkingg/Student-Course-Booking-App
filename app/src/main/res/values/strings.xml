@@ -17,4 +17,8 @@
     <string name="adminAddUser">Add a User</string>
     <string name="adminDelCourse">Delete a Course</string>
     <string name="adminDelUser">Delete a User</string>
+    <string name="courseCodeValue">Enter Course Code</string>
+    <string name="courseDesc">Enter Course Description</string>
+    <string name="courseD">Description</string>
+    <string name="courseID">Course Code</string>
 </resources>

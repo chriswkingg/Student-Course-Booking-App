@@ -70,7 +70,7 @@ public class Database extends SQLiteOpenHelper{
         ContentValues val = new ContentValues();
 
         val.put(COLUMN_COURSECODE, course.getCode());
-        val.put(COLUMN_COURSENAME, course.getName());
+        val.put(COLUMN_COURSENAME, course.getDescription());
 
         db.insert(TABLE_COURSES, null, val);
         db.close();
