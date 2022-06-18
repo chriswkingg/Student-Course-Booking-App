@@ -43,4 +43,16 @@ public class User {
     public ArrayList<Course> getCourseList() {
         return courseList;
     }
+
+    public String toString() {
+        if(this.type == ADMIN) {
+            return "Admin: " + this.username + ":" + this.password;
+        } else if(this.type == INSTRUCTOR) {
+            return "Instructor: " + this.username + ":" + this.password;
+        } else if (this.type == STUDENT) {
+            return "Student: " + this.username + ":" + this.password;
+        } else {
+            return this.username + ":" + this.password;
+        }
+    }
 }

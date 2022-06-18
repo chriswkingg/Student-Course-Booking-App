@@ -15,7 +15,7 @@ public class AdminAddUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_user);
 
-        Button addNewUser = (Button) findViewById(R.id.addNewUser);
+        final Button addNewUser = (Button) findViewById(R.id.addNewUser);
         final EditText newUsername = (EditText) findViewById(R.id.addNewUsername);
         final EditText newPassword = (EditText) findViewById(R.id.addNewPass);
         final RadioButton student = (RadioButton) findViewById(R.id.Student);
