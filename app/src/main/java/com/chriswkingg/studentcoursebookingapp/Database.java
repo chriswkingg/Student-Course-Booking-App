@@ -86,7 +86,6 @@ public class Database extends SQLiteOpenHelper{
         ArrayList<User> userList = new ArrayList<User>();
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_USERS, null);
         while(c.moveToNext()) {
-            //-1 user type represents the user is NOT logged in
             userList.add(new User(c.getString(1), c.getString(2), Integer.parseInt(c.getString(3))));
         }
         db.close();
