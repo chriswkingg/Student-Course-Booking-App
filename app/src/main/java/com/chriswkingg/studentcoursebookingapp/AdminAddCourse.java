@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +27,8 @@ public class AdminAddCourse extends AppCompatActivity{
 
                 Database database = new Database(AdminAddCourse.this);
                 database.addCourse(new Course(crsDesc, crsCode));
+                Toast.makeText(AdminAddCourse.this, "Course Successfully Added" , Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AdminAddCourse.this, AdminPage.class));
             }
         });
 

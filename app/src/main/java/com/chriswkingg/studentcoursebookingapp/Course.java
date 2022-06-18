@@ -8,6 +8,10 @@ public class Course {
         this.code = code;
     }
 
+    public Course(String code){
+        this.code = code;
+    }
+
     public String getCode() {
         return code;
     }
@@ -26,5 +30,9 @@ public class Course {
 
     public String toString() {
         return this.name + " (" + this.code + ")";
+    }
+    public String[] display(){
+        String[] temp = {getDescription(),getCode()};
+        return temp;
     }
 }
