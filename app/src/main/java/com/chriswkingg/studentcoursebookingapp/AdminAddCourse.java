@@ -2,6 +2,7 @@ package com.chriswkingg.studentcoursebookingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class AdminAddCourse extends AppCompatActivity{
                 String crsDesc = courseDesc.getText().toString();
 
                 Database database = new Database(AdminAddCourse.this);
+                Log.e(" .", new Course(crsDesc, crsCode).toString());
                 database.addCourse(new Course(crsDesc, crsCode));
                 Toast.makeText(AdminAddCourse.this, "Course Successfully Added" , Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AdminAddCourse.this, AdminPage.class));

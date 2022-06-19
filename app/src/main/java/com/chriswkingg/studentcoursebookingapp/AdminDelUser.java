@@ -1,6 +1,5 @@
 package com.chriswkingg.studentcoursebookingapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +21,7 @@ public class AdminDelUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_user);
 
-        userListView = this.findViewById(R.id.userListView);
+        userListView = this.findViewById(R.id.editCourseListView);
         db = new Database(AdminDelUser.this);
         updateUsers();
 

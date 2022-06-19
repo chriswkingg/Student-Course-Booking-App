@@ -16,7 +16,7 @@ public class Course {
         return code;
     }
 
-    public String getDescription() {
+    public String getName() {
         return name;
     }
 
@@ -25,7 +25,7 @@ public class Course {
             return false;
         }
         Course temp = (Course) o;
-        return this.getDescription() == temp.getDescription() && this.getCode() == temp.getCode();
+        return this.getName() == temp.getName() && this.getCode() == temp.getCode();
     }
 
     public String toString() {
