@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -97,7 +96,7 @@ public class Database extends SQLiteOpenHelper{
         ContentValues val = new ContentValues();
 
         val.put(COLUMN_COURSECODE, course.getCode());
-        val.put(COLUMN_COURSENAME, course.getDescription());
+        val.put(COLUMN_COURSENAME, course.getName());
 
         db.insert(TABLE_COURSES, null, val);
         db.close();
@@ -115,7 +114,7 @@ public class Database extends SQLiteOpenHelper{
         ArrayList<Course> courseList = new ArrayList<Course>();
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_COURSES, null);
         while(c.moveToNext()) {
-            courseList.add(new Course(c.getString(1), c.getString(2)));
+            courseList.add(new Course(c.getString(2), c.getString(1)));
         }
         db.close();
         return courseList;
