@@ -29,10 +29,8 @@ public class Course {
     }
 
     public String toString() {
-        return this.name + " (" + this.code + ")";
+
+        return this.name + " : " + this.code ;
     }
-    public String[] display(){
-        String[] temp = {getDescription(),getCode()};
-        return temp;
-    }
+
 }
