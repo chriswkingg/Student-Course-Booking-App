@@ -32,10 +32,13 @@
 
     <ListView
         android:id="@+id/courseListView"
-        android:layout_width="409dp"
-        android:layout_height="108dp"
+        android:layout_width="416dp"
+        android:layout_height="573dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintVertical_bias="0.506" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
