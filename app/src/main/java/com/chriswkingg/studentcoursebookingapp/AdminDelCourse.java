@@ -7,17 +7,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-import de.codecrafters.tableview.TableView;
-import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
-import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 public class AdminDelCourse extends AppCompatActivity{
     ListView courseListView;
@@ -49,6 +41,7 @@ public class AdminDelCourse extends AppCompatActivity{
         for(Course i : courses) {
             courseList.add(i.toString());
         }
+        //adaptor = new ArrayAdapter(AdminDelCourse.this, android.R.layout.simple_list_item_1, courseList);
         courseListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseList));
 
 
