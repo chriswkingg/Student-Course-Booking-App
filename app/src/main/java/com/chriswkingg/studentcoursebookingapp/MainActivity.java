@@ -52,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                 } else if (user.getType() == User.INSTRUCTOR){
                     Toast.makeText(MainActivity.this, "Instructor" , Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, InstructorPage.class));
+                    Intent i = new Intent(MainActivity.this, InstructorPage.class);
+                    i.putExtra("username", user.getUsername());
+                    startActivity(i);
                 } else {
                     Toast.makeText(MainActivity.this, "Student" , Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, StudentPage.class));
+                    Intent i = new Intent(MainActivity.this, StudentPage.class);
+                    i.putExtra("username", user.getUsername());
+                    startActivity(i);
                 }
             }
         });
