@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,10 +39,13 @@ public class AdminAddUser extends AppCompatActivity{
                 String username = newUsername.getText().toString();
                 String password = newPassword.getText().toString();
                 Database database = new Database(AdminAddUser.this);
-                if (instructor.isChecked())
+                if (instructor.isChecked()){
                     database.addUser(new User(username, password, User.INSTRUCTOR));
+                    Toast.makeText(AdminAddUser.this, "Successfully Added as Instructor" , Toast.LENGTH_SHORT).show();}
                 else{
                     database.addUser(new User(username, password, User.STUDENT));
+                    Toast.makeText(AdminAddUser.this, "Successfully Added as Student" , Toast.LENGTH_SHORT).show();
+
                 }
 
             }

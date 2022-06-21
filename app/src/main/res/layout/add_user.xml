@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:minHeight="48dp"
         android:text="@string/Instructor"
         app:layout_constraintStart_toEndOf="@+id/Student"
@@ -53,10 +53,10 @@
         android:id="@+id/addNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="92dp"
         android:text="@string/addCourse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addNewPass" />
 
@@ -64,11 +64,11 @@
         android:id="@+id/Student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:minHeight="48dp"
         android:text="@string/Student"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addNewPass" />
 
@@ -77,11 +77,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="@string/addPass"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:inputType="textPassword"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/addNewUsername" />
 
