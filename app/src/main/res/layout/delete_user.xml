@@ -7,39 +7,33 @@
 
     <ListView
         android:id="@+id/editCourseListView"
-        android:layout_width="400dp"
-        android:layout_height="486dp"
+        android:layout_width="392dp"
+        android:layout_height="594dp"
+        android:isScrollContainer="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82"
-        android:isScrollContainer="false"/>
+        app:layout_constraintVertical_bias="0.82" />
 
     <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="170dp"
+        android:layout_marginStart="36dp"
         android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+        app:layout_constraintStart_toEndOf="@+id/usernameEditText"
+        tools:layout_editor_absoluteY="37dp" />
 
     <EditText
         android:id="@+id/usernameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="101dp"
+        android:layout_width="227dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
-        android:hint="@string/Username"
+        android:hint="@string/EnterUser"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

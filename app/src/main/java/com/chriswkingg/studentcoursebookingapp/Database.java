@@ -19,6 +19,9 @@ public class Database extends SQLiteOpenHelper{
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_COURSECODE = "courseCode";
     private static final String COLUMN_COURSENAME = "courseName";
+    private static final String COLUMN_COURSEDESC = "courseDescription";
+    private static final String COLUMN_COURSEINSTRUCTOR = "courseInstructor";
+    private static final String COLUMN_COURSETIMING = "courseTiming";
 
     public Database(Context ctx) {
         super(ctx, DATABASE_NAME, null, DATABASE_VERSION);

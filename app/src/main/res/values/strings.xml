@@ -27,4 +27,10 @@
     <string name="Instructor">Instructor</string>
     <string name="editCourse">Edit Course</string>
     <string name="delete">Delete</string>
+    <string name="viewCourse">View Course</string>
+    <string name="EnterUser">Enter Username</string>
+    <string name="CourseName">Enter Course Name</string>
+    <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="assign">Assign to Self</string>
 </resources>
