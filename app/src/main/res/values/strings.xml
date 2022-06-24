@@ -27,4 +27,6 @@
     <string name="Instructor">Instructor</string>
     <string name="editCourse">Edit Course</string>
     <string name="delete">Delete</string>
+    <string name="viewCourse">View Course</string>
+    <string name="EnterUser">Enter Username</string>
 </resources>
