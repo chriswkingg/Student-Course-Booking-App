@@ -14,7 +14,7 @@ public class Database extends SQLiteOpenHelper{
     private static final String COLUMN_PASSWORDS = "password";
     private static final String COLUMN_ACCOUNT_TYPE =  "accountType";
     private static final String DATABASE_NAME = "courseapp.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_COURSECODE = "courseCode";
@@ -51,7 +51,10 @@ public class Database extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE " + TABLE_COURSES +
                 " (" + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_COURSECODE + " TEXT, " +
-                COLUMN_COURSENAME + " TEXT " +
+                COLUMN_COURSENAME + " TEXT, " +
+                COLUMN_COURSEDESC + " TEXT, " +
+                COLUMN_COURSEINSTRUCTOR + " TEXT, " +
+                COLUMN_COURSETIMING + " TEXT " +
                 ")");
     }
 
@@ -77,7 +80,6 @@ public class Database extends SQLiteOpenHelper{
     }
 
     public void deleteUser(User u) {
-        //TODO: check if the user actually exists first
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, COLUMN_USERNAMES + "=?", new String[]{u.getUsername()});
         db.close();
@@ -100,6 +102,9 @@ public class Database extends SQLiteOpenHelper{
 
         val.put(COLUMN_COURSECODE, course.getCode());
         val.put(COLUMN_COURSENAME, course.getName());
+        val.put(COLUMN_COURSEDESC, course.getDescription());
+        val.put(COLUMN_COURSEINSTRUCTOR, course.getInstructor());
+        val.put(COLUMN_COURSETIMING, course.getTiming());
 
         db.insert(TABLE_COURSES, null, val);
         db.close();
@@ -117,7 +122,7 @@ public class Database extends SQLiteOpenHelper{
         ArrayList<Course> courseList = new ArrayList<Course>();
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_COURSES, null);
         while(c.moveToNext()) {
-            courseList.add(new Course(c.getString(2), c.getString(1)));
+            courseList.add(new Course(c.getString(2), c.getString(1), c.getString(3), c.getString(4), c.getString(5), c.getString(6)));
         }
         db.close();
         return courseList;

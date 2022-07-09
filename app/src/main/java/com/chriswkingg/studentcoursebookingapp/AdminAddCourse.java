@@ -28,7 +28,7 @@ public class AdminAddCourse extends AppCompatActivity{
 
                 Database database = new Database(AdminAddCourse.this);
                 Log.e(" .", new Course(crsDesc, crsCode).toString());
-                database.addCourse(new Course(crsDesc, crsCode));
+                database.addCourse(new Course(crsDesc, crsCode, "", "", "", ""));
                 Toast.makeText(AdminAddCourse.this, "Course Successfully Added" , Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AdminAddCourse.this, AdminPage.class));
             }

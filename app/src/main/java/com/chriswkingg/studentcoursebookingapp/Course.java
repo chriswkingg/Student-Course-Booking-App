@@ -46,7 +46,7 @@ public class Course {
 
     public String toString() {
 
-        return this.code+ " : "+ this.name;
+        return this.code+ " : " + this.name + " : " + this.instructor;
     }
 
 }
