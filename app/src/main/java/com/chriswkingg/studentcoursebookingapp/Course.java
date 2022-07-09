@@ -36,6 +36,10 @@ public class Course {
 
     public String getCapacity(){return capacity; }
 
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
+
     public boolean equals(Object o) {
         if(this.getClass() != o.getClass()) {
             return false;

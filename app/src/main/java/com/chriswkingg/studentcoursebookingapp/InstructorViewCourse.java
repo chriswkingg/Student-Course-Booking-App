@@ -40,7 +40,9 @@ public class InstructorViewCourse extends AppCompatActivity {
                     if(courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
                         idx = i;
                         if ("No Instructor".equals(courses.get(i).getInstructor())){
-                            //call assign instructor function
+                            courses.get(i).setInstructor(getIntent().getStringExtra("username"));
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
                         }
                     }
                 }
@@ -54,7 +56,22 @@ public class InstructorViewCourse extends AppCompatActivity {
                     }
 
                 }
-                //updateCourses();
+                updateCourses();
+            }
+        });
+
+        assignButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                for(int i = 0; i < courses.size(); i++) {
+                    if (courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                        if ("".equals(courses.get(i).getInstructor())) {
+                            courses.get(i).setInstructor(getIntent().getStringExtra("username"));
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
+                        }
+                    }
+                }
+                updateCourses();
             }
         });
 

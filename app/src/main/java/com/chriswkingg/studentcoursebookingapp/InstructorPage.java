@@ -23,7 +23,9 @@ public class InstructorPage extends AppCompatActivity {
         instructorCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Toast.makeText(InstructorPage.this, "Account created, please sign in" , Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(InstructorPage.this, InstructorViewCourse.class));
+                Intent i = new Intent(InstructorPage.this, InstructorViewCourse.class);
+                i.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(i);
             }
         });
     }
