@@ -16,37 +16,37 @@ public class CourseTest {
     @Test
     public void testGetCode() {
         String courseCode = course.getCode();
-        assertEquals("Should return the same course code", courseCode, mockCourseCode);
+        assertEquals("Should return the same course code", mockCourseCode, courseCode);
     }
 
     @Test
-    public void getName() {
+    public void testGetName() {
         String courseName = course.getName();
-        assertEquals("Should return the same course name", courseName, mockCourseName);
+        assertEquals("Should return the same course name", mockCourseName, courseName);
     }
 
     @Test
-    public void getDescription() {
+    public void testGetDescription() {
         String courseDescription = course.getDescription();
-        assertEquals("Should return the same course description", courseDescription, mockDescription);
+        assertEquals("Should return the same course description", mockDescription, courseDescription);
     }
 
     @Test
-    public void getInstructor() {
+    public void testGetInstructor() {
         String courseInstructor = course.getInstructor();
-        assertEquals("Should return the same course instructor", courseInstructor, mockInstructor);
+        assertEquals("Should return the same course instructor",mockInstructor , courseInstructor);
     }
 
     @Test
-    public void getTiming() {
+    public void testGetTiming() {
         String courseTiming = course.getTiming();
-        assertEquals("Should return the same course timing", courseTiming, mockTiming);
+        assertEquals("Should return the same course timing", mockTiming, courseTiming);
     }
 
     @Test
-    public void getCapacity() {
+    public void testGetCapacity() {
         String courseCapacity = course.getCapacity();
-        assertEquals("Should return the same course capacity", courseCapacity, mockCapacity);
+        assertEquals("Should return the same course capacity", mockCapacity, courseCapacity);
     }
 
     @Test
