@@ -17,7 +17,7 @@ public class InstructorViewCourse extends AppCompatActivity {
     Database db;
     ArrayList<Course> courses;
     int idx =-1;
-    boolean available = false;
+    boolean available = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,11 @@ public class InstructorViewCourse extends AppCompatActivity {
                 if(idx == -1) {
                     Toast.makeText(InstructorViewCourse.this, "Couldn't find course" , Toast.LENGTH_SHORT).show();
                 } else {
-                    if (available){
-                        //assign instructor to the selected course
+                    if ("".equals(courses.get(idx).getInstructor())){
+                        Toast.makeText(InstructorViewCourse.this, "Course is available to be assigned! Click on Assign Self to teach the course" , Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(InstructorViewCourse.this, "Course Already has an Instructor Assigned!" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InstructorViewCourse.this, "Course already has an Instructor Assigned!" , Toast.LENGTH_SHORT).show();
                     }
-
                 }
                 updateCourses();
             }
@@ -74,6 +73,8 @@ public class InstructorViewCourse extends AppCompatActivity {
                 updateCourses();
             }
         });
+
+
 
     }
     private void updateCourses() {
