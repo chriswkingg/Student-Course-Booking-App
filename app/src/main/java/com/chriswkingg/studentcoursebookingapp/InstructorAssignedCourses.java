@@ -42,7 +42,6 @@ public class InstructorAssignedCourses extends AppCompatActivity {
             if (getIntent().getStringExtra("username").equals(i.getInstructor())) {
                 courseList.add(i.toString());
             }
-
         }
         assignedCourses.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseList));
     }
