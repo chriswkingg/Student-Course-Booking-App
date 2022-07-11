@@ -1,7 +1,7 @@
 package com.chriswkingg.studentcoursebookingapp;
 
 public class Course {
-    private String code="", name="", description="", instructor="", timing="", capacity="";
+    private String code, name, description, instructor, timing, capacity;
 
     public Course(String name, String code) {
         this.name = name;
@@ -36,18 +36,6 @@ public class Course {
 
     public String getCapacity(){return capacity; }
 
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
-    }
-
-    public void setTiming(String timing) {
-        this.timing = timing;
-    }
-
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
-    }
-
     public boolean equals(Object o) {
         if(this.getClass() != o.getClass()) {
             return false;
@@ -58,11 +46,7 @@ public class Course {
 
     public String toString() {
 
-
-        return this.code+ " : " + this.name + " : " + this.instructor + " : " + this.timing + " : " + this.capacity;
-
-
-
+        return this.code+ " : " + this.name + " : " + this.instructor;
     }
 
 }
