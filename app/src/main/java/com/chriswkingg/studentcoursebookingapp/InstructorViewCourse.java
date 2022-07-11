@@ -32,12 +32,13 @@ public class InstructorViewCourse extends AppCompatActivity {
         final EditText courseNameText = (EditText) findViewById(R.id.courseInstName);
         final Button searchButton = (Button) findViewById(R.id.courseInstSearch);
         final Button assignButton = (Button) findViewById(R.id.courseInstAssign);
+        final Button unassignSelf = (Button) findViewById(R.id.unassignCourse);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 idx = -1;
                 for(int i = 0; i < courses.size(); i++) {
-                    if(courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                    if((courses.get(i).getCode().equals(courseCodeText.getText().toString()))||(courses.get(i).getName().equals(courseNameText.getText().toString()))) {
                         idx = i;
                         if ("No Instructor".equals(courses.get(i).getInstructor())){
                             courses.get(i).setInstructor(getIntent().getStringExtra("username"));
@@ -58,7 +59,6 @@ public class InstructorViewCourse extends AppCompatActivity {
                 updateCourses();
             }
         });
-
         assignButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 for(int i = 0; i < courses.size(); i++) {
@@ -73,9 +73,22 @@ public class InstructorViewCourse extends AppCompatActivity {
                 updateCourses();
             }
         });
-
-
-
+        unassignSelf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                for(int i = 0; i < courses.size(); i++) {
+                    if (courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                        if (getIntent().getStringExtra("username").equals(courses.get(i).getInstructor())) {
+                            courses.get(i).setInstructor("");
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
+                        }else{
+                            Toast.makeText(InstructorViewCourse.this, "You are not teaching this course!" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                updateCourses();
+            }
+        });
     }
     private void updateCourses() {
         courses.clear();
