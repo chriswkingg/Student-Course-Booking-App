@@ -20,71 +20,46 @@ import java.util.ArrayList;
 public class InstructorAssignedCourses extends AppCompatActivity {
     ListView assignedCourses;
     ArrayList<Course> courses;
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final Database db = new Database(this);
+
+        db = new Database(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructor_assigned_courses);
+
         final EditText courseCode = (EditText) findViewById(R.id.searchCourse);
         final EditText editTiming = (EditText) findViewById(R.id.editTiming);
         final EditText editCap = (EditText) findViewById(R.id.editCap);
         assignedCourses = this.findViewById(R.id.showAssignedCourses);
-        Button changeTiming = (Button) findViewById(R.id.changeTiming);
         Button changeCapacity = (Button) findViewById(R.id.changeCap);
         Toast.makeText(InstructorAssignedCourses.this, "Hey " + getIntent().getStringExtra("username") + ", here are your courses", Toast.LENGTH_SHORT).show();
         courses = db.getCourses();
+
         final ArrayList<String> courseList = new ArrayList<String>();
-        final ArrayList<String> courseCodeToCheck = new ArrayList<String>();
         for (Course i : courses) {
             if (getIntent().getStringExtra("username").equals(i.getInstructor())) {
                 courseList.add(i.toString());
-                courseCodeToCheck.add(i.getCode());
             }
         }
-
-        changeTiming.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                for(int i = 0; i < courseList.size(); i++) {
-                    if (courseCodeToCheck.get(i).equals(courseCode.getText().toString())){
-                        Toast.makeText(InstructorAssignedCourses.this,  ", Timing called", Toast.LENGTH_SHORT).show();
-                        courses.get(i).setTiming(editTiming.getText().toString());
-                        db.deleteCourse(courses.get(i));
-                        db.addCourse(courses.get(i));
-                        courseList.remove(i);
-                        courseList.add(courses.get(i).toString());
-                        updateCourses();
-                    }
-                }
-            }
-        });
 
         changeCapacity.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                for(int i = 0; i < courseList.size(); i++) {
-                    if (courseCodeToCheck.get(i).equals(courseCode.getText().toString())){
-                        Toast.makeText(InstructorAssignedCourses.this,  ", Cap Called", Toast.LENGTH_SHORT).show();
-                        courses.get(i).setCapacity(editCap.getText().toString());
-                        db.deleteCourse(courses.get(i));
-                        db.addCourse(courses.get(i));
-                        courseList.remove(i);
-                        courseList.add(courses.get(i).toString());
-                        updateCourses();
+                for(Course i: courses) {
+                    if (i.getCode().equals(courseCode.getText().toString())){
+                        if(!editTiming.getText().toString().equals(""))
+                            i.setTiming(editTiming.getText().toString());
+                        if(!editCap.getText().toString().equals(""))
+                            i.setCapacity(editCap.getText().toString());
+                        db.deleteCourse(i);
+                        db.addCourse(i);
+                        Toast.makeText(InstructorAssignedCourses.this,  "Changes Saved Successfully!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(InstructorAssignedCourses.this, InstructorPage.class));
                     }
                 }
             }
         });
         assignedCourses.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseList));
-    }
-    private void updateCourses() {
-        courses.clear();
-        final Database db = new Database(this);
-        courses = db.getCourses();
-        ArrayList<String> courseList = new ArrayList<String>();
-        for (Course i : courses) {
-            courseList.add(i.toString());
-        }
-        assignedCourses.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseList));
-
     }
 }

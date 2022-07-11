@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,7 @@ public class AdminPage extends AppCompatActivity {
         Button adminAddUser = (Button) findViewById(R.id.adminAddUser);
         Button adminDelUser = (Button) findViewById(R.id.adminDelUser);
         Button adminEditCourse = (Button) findViewById(R.id.editCourse);
+        Button adminLogOut = (Button) findViewById(R.id.logOut);
 
         adminAddCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -49,6 +51,13 @@ public class AdminPage extends AppCompatActivity {
         adminEditCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 startActivity(new Intent(AdminPage.this, AdminEditCourse.class));
+            }
+        });
+
+        adminLogOut.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Toast.makeText(AdminPage.this,  "Logged Out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AdminPage.this, MainActivity.class));
             }
         });
 
