@@ -17,7 +17,7 @@ public class InstructorViewCourse extends AppCompatActivity {
     Database db;
     ArrayList<Course> courses;
     int idx =-1;
-    boolean available = false;
+    boolean available = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +32,63 @@ public class InstructorViewCourse extends AppCompatActivity {
         final EditText courseNameText = (EditText) findViewById(R.id.courseInstName);
         final Button searchButton = (Button) findViewById(R.id.courseInstSearch);
         final Button assignButton = (Button) findViewById(R.id.courseInstAssign);
+        final Button unassignSelf = (Button) findViewById(R.id.unassignCourse);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 idx = -1;
                 for(int i = 0; i < courses.size(); i++) {
-                    if(courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                    if((courses.get(i).getCode().equals(courseCodeText.getText().toString()))||(courses.get(i).getName().equals(courseNameText.getText().toString()))) {
                         idx = i;
                         if ("No Instructor".equals(courses.get(i).getInstructor())){
-                            //call assign instructor function
+                            courses.get(i).setInstructor(getIntent().getStringExtra("username"));
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
                         }
                     }
                 }
                 if(idx == -1) {
                     Toast.makeText(InstructorViewCourse.this, "Couldn't find course" , Toast.LENGTH_SHORT).show();
                 } else {
-                    if (available){
-                        //assign instructor to the selected course
+                    if ("".equals(courses.get(idx).getInstructor())){
+                        Toast.makeText(InstructorViewCourse.this, "Course is available to be assigned! Click on Assign Self to teach the course" , Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(InstructorViewCourse.this, "Course Already has an Instructor Assigned!" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InstructorViewCourse.this, "Course already has an Instructor Assigned!" , Toast.LENGTH_SHORT).show();
                     }
-
                 }
-                //updateCourses();
+                updateCourses();
             }
         });
-
+        assignButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                for(int i = 0; i < courses.size(); i++) {
+                    if (courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                        if ("".equals(courses.get(i).getInstructor())) {
+                            courses.get(i).setInstructor(getIntent().getStringExtra("username"));
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
+                        }
+                    }
+                }
+                updateCourses();
+            }
+        });
+        unassignSelf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                for(int i = 0; i < courses.size(); i++) {
+                    if (courses.get(i).getCode().equals(courseCodeText.getText().toString())) {
+                        if (getIntent().getStringExtra("username").equals(courses.get(i).getInstructor())) {
+                            courses.get(i).setInstructor("");
+                            db.deleteCourse(courses.get(i));
+                            db.addCourse(courses.get(i));
+                        }else{
+                            Toast.makeText(InstructorViewCourse.this, "You are not teaching this course!" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                updateCourses();
+            }
+        });
     }
     private void updateCourses() {
         courses.clear();

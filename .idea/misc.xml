@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/delete_course.xml" value="0.26944122314453123" />
         <entry key="app/src/main/res/layout/delete_user.xml" value="0.313939921061198" />
         <entry key="app/src/main/res/layout/edit_course.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/instructor_assigned_courses.xml" value="0.2718414306640625" />
         <entry key="app/src/main/res/layout/instructor_courses.xml" value="0.24958750406901042" />
         <entry key="app/src/main/res/layout/instructor_page.xml" value="0.32652469211154517" />
         <entry key="app/src/main/res/layout/login_page.xml" value="0.2375" />

@@ -46,17 +46,17 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 if (user.getType() == User.ADMIN){
-                    Toast.makeText(MainActivity.this, "Admin User" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Logged in as Admin" , Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, AdminPage.class);
                     i.putExtra("username", user.getUsername());
                     startActivity(i);
                 } else if (user.getType() == User.INSTRUCTOR){
-                    Toast.makeText(MainActivity.this, "Instructor" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Logged in as Instructor" , Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, InstructorPage.class);
                     i.putExtra("username", user.getUsername());
                     startActivity(i);
                 } else {
-                    Toast.makeText(MainActivity.this, "Student" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Logged in as Student" , Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, StudentPage.class);
                     i.putExtra("username", user.getUsername());
                     startActivity(i);
