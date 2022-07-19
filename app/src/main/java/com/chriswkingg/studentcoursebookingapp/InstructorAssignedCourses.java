@@ -55,7 +55,9 @@ public class InstructorAssignedCourses extends AppCompatActivity {
                         db.deleteCourse(i);
                         db.addCourse(i);
                         Toast.makeText(InstructorAssignedCourses.this,  "Changes Saved Successfully!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(InstructorAssignedCourses.this, InstructorPage.class));
+                        Intent intent = new Intent(InstructorAssignedCourses.this, InstructorPage.class);
+                        intent.putExtra("username", getIntent().getStringExtra("username"));
+                        startActivity(intent);
                     }
                 }
             }
