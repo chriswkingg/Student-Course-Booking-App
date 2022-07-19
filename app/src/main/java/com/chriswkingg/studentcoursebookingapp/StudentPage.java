@@ -32,14 +32,18 @@ public class StudentPage extends AppCompatActivity {
         studentEnroll.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Toast.makeText(StudentPage.this,  "Select the courses to get Enrolled", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StudentPage.this, StudentEnroll.class));
+                Intent i = new Intent(StudentPage.this, StudentEnroll.class);
+                i.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(i);
             }
         });
 
         studentMyCourses.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Toast.makeText(StudentPage.this,  "Here are your Courses!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StudentPage.this, StudentCourses.class));
+                Intent i = new Intent(StudentPage.this, StudentCourses.class);
+                i.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(i);
             }
         });
     }
