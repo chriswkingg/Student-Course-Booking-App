@@ -22,6 +22,7 @@ public class StudentCourses extends AppCompatActivity {
     List<String> combinedList = new ArrayList<>();
     TextView welcomeMessage;
     StudentEnroll ob = new StudentEnroll();
+    boolean flag = true;
 
     private static ArrayList<String> courseList;
     private static ArrayList<String> courseTiming;
@@ -31,42 +32,56 @@ public class StudentCourses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_mycourses);
         Button unEnroll = (Button) findViewById(R.id.unEnroll);
-        EditText courseCode = (EditText) findViewById(R.id.StudentUnEnrollCode);
+        final EditText courseCode = (EditText) findViewById(R.id.StudentUnEnrollCode);
         welcomeMessage = (TextView) findViewById(R.id.studentCourseMess);
         welcomeMessage.setText("Hey " + getIntent().getStringExtra("username") + ", here are your courses");
         studentCourseList = this.findViewById(R.id.studentMyCourseList);
         updateCourses();
 
+        unEnroll.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ob.delMyCourses(courseCode.getText().toString());
+                flag = false;
+                updateCourses();
+            }
+        });
     }
     private void updateCourses() {
-
         listOfCourses = ob.getMyCourses();
         listOfTiming = ob.getMyCourseTiming();
-        Toast.makeText(StudentCourses.this, "ListTiming Size is  "+listOfTiming.size() , Toast.LENGTH_SHORT).show();
-
-
         courseList = new ArrayList<String>();
         courseTiming = new ArrayList<String>();
-
-
-        if (listOfCourses == null){
-            welcomeMessage = (TextView) findViewById(R.id.studentCourseMess);
-            welcomeMessage.setText( getIntent().getStringExtra("username") + ", you are not enrolled in any classes");
-        }else {
+        if (flag){
+            if (listOfCourses == null){
+                welcomeMessage = (TextView) findViewById(R.id.studentCourseMess);
+                welcomeMessage.setText( getIntent().getStringExtra("username") + ", you are not enrolled in any classes");
+            }else {
+                for (String i : listOfCourses) {
+                    courseList.add(i);
+                }
+                for(String i: listOfTiming){
+                    courseTiming.add(i);
+                }
+                for (int i=0; i<courseList.size(); i++){
+                    combinedList.add("Course: "+listOfCourses.get(i) +", Timing: "+ listOfTiming.get(i));
+                }
+            }
+            studentCourseList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, combinedList));
+        }else{
+            List<String> combinedList2 = new ArrayList<>();
             for (String i : listOfCourses) {
                 courseList.add(i);
             }
             for(String i: listOfTiming){
                 courseTiming.add(i);
             }
-//            combinedList.addAll(courseList);
-//            combinedList.addAll(courseTiming);
-            for (int i=0; i<courseTiming.size(); i++){
-                combinedList.add("Course: "+listOfCourses.get(i) +", Timing: "+ listOfTiming.get(i));
+            for (int i=0; i<courseList.size(); i++){
+                combinedList2.add("Course: "+listOfCourses.get(i) +", Timing: "+ listOfTiming.get(i));
             }
+        studentCourseList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, combinedList2));
+        flag = true;
         }
 
-        studentCourseList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, combinedList));
 
     }
 }

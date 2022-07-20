@@ -90,6 +90,13 @@ public class StudentEnroll extends AppCompatActivity {
         return myCourseTiming;
     }
 
+    public void delMyCourses(String delCourse){
+        if (myCourses.contains(delCourse)){
+            int i = myCourses.indexOf(delCourse);
+            myCourseTiming.remove(i);
+            myCourses.remove(delCourse);
+        }
+    }
     private void updateCourses() {
         listOfCourses.clear();
         listOfCourses = db.getCourses();
