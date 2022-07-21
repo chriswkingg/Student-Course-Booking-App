@@ -42,14 +42,14 @@ public class StudentEnroll extends AppCompatActivity {
             public void onClick(View v){
                 idx = -1;
                 for(int i = 0; i < listOfCourses.size(); i++) {
-                    if ((listOfCourses.get(i).getCode().equals(courseCode.getText().toString())) || (listOfCourses.get(i).getName().equals(courseName.getText().toString())) || (listOfCourses.get(i).getTiming().equals(courseTiming.getText().toString())) ) {
+                    if ((listOfCourses.get(i).getCode().equals(courseCode.getText().toString()) && !courseCode.getText().toString().equals("")) || (listOfCourses.get(i).getName().equals(courseName.getText().toString()) && !courseName.getText().toString().equals("")) || (listOfCourses.get(i).getTiming().equals(courseTiming.getText().toString()) && !courseTiming.getText().toString().equals(""))) {
                         idx = i;
                     }
                 }
                 if (idx==-1){
                     Toast.makeText(StudentEnroll.this, "Sorry, couldn't find course." , Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(StudentEnroll.this, "Course is available, click Enroll" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentEnroll.this, "Course is available! Fill the course code and click Enroll" , Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -65,13 +65,18 @@ public class StudentEnroll extends AppCompatActivity {
                             myCourses = new ArrayList<String>();
                             myCourseTiming = new ArrayList<String>();
                         }
-                        if (listOfCourses.get(i).getCode().equals(courseCode.getText().toString()) ){
-                            myCourses.add(listOfCourses.get(i).getCode());
-                            myCourseTiming.add(listOfCourses.get(i).getTiming());
-                            Toast.makeText(StudentEnroll.this, "You have Successfully Enrolled in the course!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(StudentEnroll.this, StudentPage.class);
-                            intent.putExtra("username", getIntent().getStringExtra("username"));
-                            startActivity(intent);
+                        if (listOfCourses.get(i).getCode().equals(courseCode.getText().toString())){
+                            if (myCourseTiming.contains(listOfCourses.get(i).getTiming())){
+                                Toast.makeText(StudentEnroll.this, "Course on the same day! Possible Conflict. Pick a different course", Toast.LENGTH_SHORT).show();
+                            }else{
+                                myCourses.add(listOfCourses.get(i).getCode());
+                                myCourseTiming.add(listOfCourses.get(i).getTiming());
+                                Toast.makeText(StudentEnroll.this, "You have Successfully Enrolled in the course!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(StudentEnroll.this, StudentPage.class);
+                                intent.putExtra("username", getIntent().getStringExtra("username"));
+                                startActivity(intent);
+                            }
+
                         }
                     }
                 }
