@@ -6,49 +6,50 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/studentWelcomeText"
+        android:id="@+id/studentCourseMess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logged in as student"
+        android:layout_marginTop="32dp"
+        android:text="My Courses"
         android:textColor="@color/colorPrimaryDark"
-        android:textColorLink="#673AB7"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/studentLogOut"
+    <EditText
+        android:id="@+id/StudentUnEnrollCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="LogOut"
+        android:ems="10"
+        android:hint="Enter Course Code"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentCourseMess" />
 
     <Button
-        android:id="@+id/studentEnroll"
+        android:id="@+id/unEnroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:text="Enroll"
+        android:layout_marginTop="20dp"
+        android:text="UNENROLL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/StudentUnEnrollCode" />
 
-    <Button
-        android:id="@+id/studentMyCourses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="My Courses"
+    <ListView
+        android:id="@+id/studentMyCourseList"
+        android:layout_width="402dp"
+        android:layout_height="508dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentEnroll" />
-
+        app:layout_constraintTop_toBottomOf="@+id/unEnroll"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
