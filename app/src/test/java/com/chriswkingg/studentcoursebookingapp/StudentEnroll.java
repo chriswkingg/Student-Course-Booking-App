@@ -7,11 +7,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class StudentEnroll extends AppCompatActivity {
@@ -19,24 +19,24 @@ public class StudentEnroll extends AppCompatActivity {
     Database db;
     ArrayList<Course> listOfCourses;
     int idx = -1;
-    public static ArrayList<String> myCourses;
-    public static ArrayList<String> myCourseTiming;
+    public static ArrayList<String> myCourses = new ArrayList<>();
+    public static ArrayList<String> myCourseTiming = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_enroll);
-        Button studentEnroll = (Button) findViewById(R.id.studentEnrollCourse);
-        Button studentSearchCourse = (Button) findViewById(R.id.studentSearchCourse);
+        //setContentView(R.layout.student_enroll);
+        //Button studentEnroll = (Button) findViewById(R.id.studentEnrollCourse);
+        //Button studentSearchCourse = (Button) findViewById(R.id.studentSearchCourse);
 
-        final EditText courseCode = (EditText) findViewById(R.id.studentCourseCode);
-        final EditText courseName = (EditText) findViewById(R.id.studentCourseName);
-        final EditText courseTiming = (EditText) findViewById(R.id.studentCourseTiming);
+        //final EditText courseCode = (EditText) findViewById(R.id.studentCourseCode);
+        //final EditText courseName = (EditText) findViewById(R.id.studentCourseName);
+        //final EditText courseTiming = (EditText) findViewById(R.id.studentCourseTiming);
 
-        studentCourseList = this.findViewById(R.id.studentCourseListView);
+        //studentCourseList = this.findViewById(R.id.studentCourseListView);
         db = new Database(StudentEnroll.this);
         listOfCourses = db.getCourses();
-        updateCourses();
+        /*updateCourses();
 
         studentSearchCourse.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -86,6 +86,7 @@ public class StudentEnroll extends AppCompatActivity {
             }
         });
 
+    }*/
     }
     public static ArrayList<String> getMyCourses(){
         return myCourses;
